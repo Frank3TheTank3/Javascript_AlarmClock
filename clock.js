@@ -72,6 +72,7 @@ setInterval(function () {
     if (timesval < 1 && timemval < 1 && timehval < 1) {
       var audio = new Audio("alarm.mp3");
       audio.play();
+      timeHasBeenSet = false;
       timeDateHasBeenSet = false;
       showingCurrentTime = true;
 
@@ -79,7 +80,7 @@ setInterval(function () {
       ad_script = document.body.appendChild(document.createElement("script"));
       ad_script.src = "confetti.js";
       var script = document.getElementById("script");
-
+      document.getElementById("doctitle").textContent = "This is a clock";
       document.getElementById("timeh").value = "";
       document.getElementById("timem").value = "";
       document.getElementById("times").value = "";
@@ -113,7 +114,7 @@ setInterval(function () {
                   `;
   }
 
-  else if(timeDateHasBeenSet) 
+  if(timeDateHasBeenSet) 
   {
 
     seconds--;
@@ -148,7 +149,8 @@ setInterval(function () {
      if (seconds < 1 && minutes < 1 && hours < 1) {
       var audio = new Audio("alarm.mp3");
       audio.play();
-      timeDateHasBeenSet = true;
+      timeHasBeenSet = false;
+      timeDateHasBeenSet = false;
       showingCurrentTime = true;
 
       //Add Confetti Script
@@ -178,18 +180,51 @@ setInterval(function () {
 
 function setTimer() {
 
-  showingCurrentTime = false;
-
+  
   timehval = document.getElementById("timeh").value;
   timemval = document.getElementById("timem").value;
   timesval = document.getElementById("times").value;
-  timedval = document.getElementById("dates").value;
-  console.log(timedval);
+  
+  
+    document.getElementById("doctitle").textContent = "Countdown timer";
+
+   
+      final_timehval = timehval;
+    
+  
+      final_timemval = timemval;
+    
+  
+      final_timesval = timesval;
+    
+  
+      document.getElementById("textresult").innerHTML = `
+      ${final_timehval}
+      :
+      ${final_timemval}
+      :
+      ${final_timesval}
+      `;
+      timeHasBeenSet = true;
+      timeDateHasBeenSet = false;
+      showingCurrentTime = false;
+    
+  
+}
+  
+//Set Date Timer
+
+function setDateTimer() {
 
   
-  if (timedval !== null) {
-    
-    
+
+  
+  timedval = document.getElementById("dates").value;
+  
+  
+
+
+    document.getElementById("doctitle").textContent = "Date timer";
     thisTime = new Date();
     inputTime = new Date(timedval);
 
@@ -213,49 +248,12 @@ function setTimer() {
     ${seconds}
     `;
 
-    timeDateHasBeenSet = true;
-  } 
+    timeHasBeenSet = false;
+      timeDateHasBeenSet = true;
+      showingCurrentTime = false;
+
+
+    
   
-  else if (timedval === null) {
-    timeHasBeenSet = true;
-  document.getElementById("doctitle").textContent = "This is a timer";
-
-  
-
-  console.log(timedval);
-  if (timemval != null && timemval != 0) {
-    final_timehval = timehval;
-  }
-
-  if (timemval != null && timemval != 0) {
-    final_timemval = timemval;
-  }
-
-  if (timesval != null && timesval != 0) {
-    final_timehval = timesval;
-  }
-
-    document.getElementById("textresult").innerHTML = `
-    ${final_timehval}
-    :
-    ${final_timemval}
-    :
-    ${final_timesval}
-    `;
-  }
 }
 
-/*
-              const monthNames = ["January", "February", "March", "April", "May", "June",
-              "July", "August", "September", "October", "November", "December"
-              ];
-              const day = "Today is a good day and guess what:";
-              console.log(`Frank said ${day}`);
-              rank said: 
-              ${day}
-              it's the month of 
-              ${monthNames[time.getUTCMonth()]} 
-              in 
-              ${time.getUTCFullYear()}
-              and to be really precise the time is
-              */

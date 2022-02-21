@@ -32,6 +32,8 @@ canvas {
   transform: translate(-50%, -50%);
 }
 
+
+
 div {
   width: 100%;
   align-items: right;
@@ -82,7 +84,6 @@ input[type="number"] {
 
 input[type="datetime-local"] {
   margin: 25px;
-  font-size: 16px;
 
   width: 370px;
   padding: 20px;
@@ -103,6 +104,28 @@ input[type="datetime-local"] {
   border-radius: 10px;
   background-color: lightcoral;
   color: lightgoldenrodyellow;
+  left: 35%;
+}
+
+.button2 {
+
+  left:65%;
+  top: 180px;
+  display: flex;
+  height: 100px;
+  width: 400px;
+  font-size: 50px;
+  box-shadow: 0 0 15px 4px rgba(143, 124, 124, 0.06);
+  border-radius: 10px;
+  background-color: lightcoral;
+  color: lightgoldenrodyellow;
+  text-align: center;
+  
+}
+
+button p{
+font-size: 55px;
+
 }
 
 label {
